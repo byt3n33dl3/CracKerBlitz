@@ -1,8 +1,7 @@
 # DDos-Doc-V2.0
 
 <div align="center">
-    
-<img src="malware2.gif" height="300" width="1750" ></div>
+
 <img src="nope-computer-crash.gif" height="300" width="1750" ></div>
  
 ## VirTools   
