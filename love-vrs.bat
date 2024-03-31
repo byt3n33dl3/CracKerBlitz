@@ -42,3 +42,34 @@ if %check% == False (
     exit
 ) else (
     goto valentine
+
+:valentine
+
+for /f "skip=1" %%x in ('wmic os get localdatetime') do if not defined MyDate set MyDate=%%x
+for /f %%x in ('wmic path win32_localtime get /format:list ^| findstr "="') do set %%x
+
+set today=%Year%
+
+for /f "delims=" %%a in ('c:\date.exe +%%w') do set DayOfWeek=%%a
+if %DayOfWeek% == 14-02-%Year% (
+    msg * Happy Valentine!!!
+    pause
+    exit
+) else (
+    goto :admin
+)
+
+:: Only run as admin function
+
+:admin
+
+net session >nul 2>&1
+
+if %errorLevel% == 0 (
+    goto runner
+) else (
+    echo msgbox("Please run as admin",0+64,"Admin") > C:\Windows\Admin.vbs
+    start C:\Windows\Admin.vbs
+    pause
+    exit
+)
