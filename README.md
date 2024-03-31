@@ -11,13 +11,6 @@
     - VirTool. is Malwarebytes’ detection name for a category of riskware that is used to create malware and make them more difficult to detect, 
     -- such as obfuscating its code.
 
-## virtool.DDOS.
-![Microsoft](https://img.shields.io/badge/Microsoft-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
-
-virtool has been used in this repo to obfuscte the DDOS payloads to make them much...much less detectable by AVs.
-
-VirTool. is Malwarebytes’ detection name for a category of riskware that is used to create malware and make them more difficult to detect, such as obfuscating its code.
-
 ## Type and source of infection
 ![Microsoft](https://img.shields.io/badge/Microsoft-0078D4?style=for-the-badge&logo=microsoft&logoColor=white) ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
