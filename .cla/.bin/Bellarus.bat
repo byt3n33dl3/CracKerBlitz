@@ -1,24 +1,5 @@
 @echo off
 
-:: THIS VERSION CAN CONTAIN BUGS
-::
-::__xxxxxxxxxxx______xxxxxxxxxx
-::_xxxxxxxxxxxxxx___xxxxxxxxxxxxx
-::xxxxxxxxxxxxxxxx_xxxxxxxxxxxxxx
-::xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-::_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-::__xxxxxxxxxxxxxxxxxxxxxxxxxxx
-::____xxxxxxxxxxxxxxxxxxxxxx
-::_______xxxxxxxxxxxxxxxxx
-::________xxxxxxxxxxxx
-::__________xxxxxxxxx
-::____________xxxxx
-::_____________xxx
-::_____________xx
-::_____________*
-::
-::                                                                         
-
 color 35
 
 title Loveware
