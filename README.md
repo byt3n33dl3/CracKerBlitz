@@ -19,4 +19,4 @@ Abusive and aggressive ( Kerberos ) attack
 This section covers some notes on the operational security of using `Bellaros` in an environment, with some technical examples comparing/contrasting some of its approaches. 
 The material here will be expanded in the future.
 
-thanks to ( Rubeus ) and more roasting scripts.
+thanks to ( Rubeus ) and several roasting scripts.
